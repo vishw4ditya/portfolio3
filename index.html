@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aditya Vishwakarma — Full-Stack Developer</title>
+<meta name="description" content="Aditya Vishwakarma is a MERN-stack Full-Stack Developer building scalable web applications and intuitive interfaces.">
+<meta property="og:title" content="Aditya Vishwakarma — Full-Stack Developer">
+<meta property="og:description" content="Building digital experiences, one line at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080808;--bg2:#101010;--fg:#F5F2ED;--mute:#99948D;--red:#F13B48;--line:rgba(245,242,237,.12);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--side:280px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="light"]){color-scheme:dark}}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font:300 16px/1.7 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.mono{font:400 11px/1.8 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.mute{color:var(--mute)}
+.red{color:var(--red)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.015em}
+h2{font-size:clamp(2.6rem,6vw,5.2rem)}
+h2 i,h1 i{color:var(--mute);font-style:italic}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:200}
+#pre{position:fixed;inset:0;background:var(--bg);z-index:300;display:flex;align-items:center;justify-content:center;transition:transform .9s cubic-bezier(.76,0,.24,1)}
+#pre b{font:400 3rem var(--serif)}#pre b span{color:var(--red)}
+#pre.go{transform:translateY(-100%)}
+/* sidebar */
+aside{position:fixed;inset:0 auto 0 0;width:var(--side);border-right:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;justify-content:space-between;z-index:50}
+aside>div{padding:32px 36px}
+.logo{font:500 2.1rem var(--serif);letter-spacing:-.02em;display:block}.logo span{color:var(--red)}
+.top{border-bottom:1px solid var(--line)}.bot{border-top:1px solid var(--line)}
+nav a{display:flex;gap:14px;padding:10px 36px;margin:0 -36px;color:var(--mute);transition:.3s;position:relative}
+nav a em{font-style:normal;color:#5d5a55}
+nav a:hover,nav a.on{color:var(--fg);background:rgba(245,242,237,.04);padding-left:44px}
+nav a.on em{color:var(--red)}
+nav a.on::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red)}
+.dot{display:inline-block;width:7px;height:7px;background:var(--red);margin-right:8px;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+main{margin-left:var(--side)}
+section{padding:clamp(80px,12vw,160px) clamp(24px,6vw,96px);border-bottom:1px solid var(--line);position:relative}
+.label{color:var(--mute);margin-bottom:28px}.label:before{content:"";display:inline-block;width:8px;height:8px;background:var(--red);margin-right:12px}
+/* hero */
+#home{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;padding-top:36px}
+.glow{position:absolute;width:70vmin;height:70vmin;right:-10vmin;top:10vh;border-radius:50%;background:radial-gradient(circle,rgba(241,59,72,.32),rgba(241,59,72,0) 65%);filter:blur(30px);animation:drift 14s ease-in-out infinite alternate;pointer-events:none}
+.rings{position:absolute;right:6vw;top:22vh;width:46vmin;height:46vmin;perspective:900px;pointer-events:none}
+.rings i{position:absolute;inset:0;border:1px solid rgba(245,242,237,.18);border-radius:50%;transform-style:preserve-3d;animation:spin 22s linear infinite}
+.rings i:nth-child(2){inset:12%;animation-duration:30s;animation-direction:reverse;border-color:rgba(241,59,72,.5)}
+.rings i:nth-child(3){inset:26%;animation-duration:18s}
+@keyframes spin{from{transform:rotateX(68deg) rotateZ(0)}to{transform:rotateX(68deg) rotateZ(360deg)}}
+@keyframes drift{to{transform:translate(-8vw,8vh) scale(1.15)}}
+.hrow{display:flex;justify-content:space-between;gap:20px;position:relative;z-index:2}
+h1{font-size:clamp(3.2rem,9.2vw,8.6rem);margin:20px 0 28px;position:relative;z-index:2}
+h1 .l{display:block;overflow:hidden;padding-bottom:.08em}h1 .l span{display:block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.ready h1 .l span{transform:none}.ready h1 .l:nth-child(2) span{transition-delay:.12s}.ready h1 .l:nth-child(3) span{transition-delay:.24s}
+.lead{max-width:560px;font-size:1.12rem;color:#d3cec6;position:relative;z-index:2}
+.cyc{color:var(--red);display:inline-block;min-width:11ch}
+.ctas{display:flex;flex-wrap:wrap;gap:20px;margin-top:40px;align-items:center;position:relative;z-index:2}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 28px;min-height:48px;background:var(--red);color:#fff;border:0;cursor:pointer;transition:transform .25s,background .25s;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.btn:hover{background:#ff5460}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--fg)}.btn.ghost:hover{border-color:var(--fg);background:none}
+.arrow{display:inline-block;transition:transform .3s}a:hover .arrow,.btn:hover .arrow{transform:translate(4px,-4px)}
+.scroll{position:absolute;right:clamp(24px,4vw,56px);bottom:40px;writing-mode:vertical-rl;z-index:2;color:var(--mute)}
+.scroll:after{content:"";display:block;width:1px;height:56px;background:var(--fg);margin:12px auto 0;animation:sl 2s infinite;transform-origin:top}
+@keyframes sl{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,96px);margin-top:56px}
+.about p{margin-bottom:20px;color:#d3cec6}
+.facts{border-top:1px solid var(--line)}.facts div{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.facts b{font:400 1.6rem var(--serif);text-align:right}
+.big{font:italic 400 clamp(6rem,16vw,14rem)/0.8 var(--serif);color:transparent;-webkit-text-stroke:1px rgba(245,242,237,.22);margin-bottom:24px}
+/* work */
+.work{margin-top:72px;display:flex;flex-direction:column;gap:clamp(64px,9vw,120px)}
+.proj{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.proj:nth-child(even){grid-template-columns:1fr 1.35fr}.proj:nth-child(even) .shot{order:2}
+.shot{position:relative;aspect-ratio:16/10;background:var(--bg2);border:1px solid var(--line);overflow:hidden;display:block}
+.mock{position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);padding:9% 8%;background:radial-gradient(ellipse at 20% 0,rgba(241,59,72,.22),transparent 60%),#0c0c0c}
+.proj:hover .mock{transform:scale(1.06)}
+.mock .w{border:1px solid var(--line);background:rgba(245,242,237,.04);height:100%;display:grid;gap:8px;padding:10px}
+.mock .w i{background:rgba(245,242,237,.09);display:block}.mock .w i.r{background:rgba(241,59,72,.7)}
+.m1 .w{grid-template-columns:.5fr 2fr;grid-template-rows:.4fr 1fr 1fr}.m1 .w i:first-child{grid-row:1/4}.m1 .w i:nth-child(2){grid-column:2}
+.m2 .w{grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1.3fr}.m2 .w i:first-child{border-radius:50%;grid-row:1}.m2 .w i:nth-child(4){grid-column:1/4}
+.m3 .w{grid-template-columns:repeat(3,1fr);grid-template-rows:.3fr 1fr 1fr}.m3 .w i:first-child{grid-column:1/4}
+.corner{position:absolute;left:14px;top:14px;width:16px;height:16px;border-left:1px solid var(--fg);border-top:1px solid var(--fg);z-index:2}
+.tag{position:absolute;z-index:2;top:14px;right:16px}.note{position:absolute;z-index:2;left:16px;bottom:12px;color:var(--mute)}
+.over{position:absolute;inset:0;z-index:3;background:rgba(8,8,8,.9);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;opacity:0;transition:opacity .4s}
+.shot:hover .over,.shot:focus-visible .over{opacity:1}
+.over li{list-style:none;color:#d3cec6;font-size:.92rem;padding:5px 0;border-bottom:1px solid var(--line)}
+.info h3{font-size:clamp(2.2rem,4vw,3.4rem);margin:10px 0 16px}.info p{color:#d3cec6;margin-bottom:22px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}.tags span{border:1px solid var(--line);padding:3px 11px;color:var(--mute)}
+.links{display:flex;gap:28px;flex-wrap:wrap}.links a{border-bottom:1px solid var(--red);padding:8px 0}
+/* timeline */
+.tl{position:relative;margin:64px 0 0 12px;padding-left:44px;max-width:820px}
+.tl:before,.tl .fill{content:"";position:absolute;left:0;top:6px;bottom:0;width:1px;background:var(--line)}
+.tl .fill{background:var(--red);bottom:auto;height:0;box-shadow:0 0 12px var(--red);transition:height 1.8s cubic-bezier(.2,.8,.2,1)}
+.tl.in .fill{height:100%}
+.tl .pt{position:absolute;left:-5px;top:8px;width:11px;height:11px;background:var(--red);border-radius:50%;box-shadow:0 0 0 6px rgba(241,59,72,.18)}
+.tl h3{font-size:2.4rem;margin:6px 0 4px}.tl ul{margin-top:24px}.tl li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);color:#d3cec6}
+/* skills */
+.sk{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.sk div{padding:32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s}
+.sk div:hover{background:var(--bg2)}.sk h3{font-size:1.9rem;margin-bottom:16px}
+.sk span{display:inline-block;margin:0 14px 8px 0;color:var(--mute);transition:.25s}.sk span:hover{color:var(--fg);transform:translateX(3px)}
+.sk span:before{content:"+";color:var(--red);margin-right:6px}
+.learn{margin-top:100px;display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+.learn h2{font-size:clamp(2.2rem,4vw,3.6rem)}
+.pills{display:flex;flex-wrap:wrap;gap:12px}.pills span{border:1px dashed rgba(241,59,72,.6);padding:8px 18px;border-radius:999px;transition:.3s}.pills span:hover{background:var(--red);color:#fff}
+/* achievements */
+.ach{margin-top:56px;border-top:1px solid var(--line)}
+.ach div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:28px 0;border-bottom:1px solid var(--line);transition:padding .4s,color .3s;color:var(--mute);cursor:default}
+.ach div:hover{padding-left:24px;color:var(--fg)}.ach b{font:400 clamp(1.5rem,3.2vw,2.6rem)/1.15 var(--serif)}
+/* contact */
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);margin-top:56px}
+.ct p{color:#d3cec6;margin-bottom:28px}.ct dl{border-top:1px solid var(--line)}.ct dl div{padding:14px 0;border-bottom:1px solid var(--line)}.ct dd{word-break:break-all}
+form{display:grid;gap:22px}label{display:block}
+input,textarea{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:300 1rem var(--sans);padding:10px 0;min-height:44px;border-radius:0}
+input:focus,textarea:focus{outline:0;border-color:var(--red)}textarea{min-height:120px;resize:vertical}
+.err{color:var(--red);min-height:1.2em}#st{min-height:1.5em;color:var(--mute)}
+.cp{background:none;border:1px solid var(--line);color:var(--fg);padding:8px 14px;cursor:pointer;margin-left:8px;min-height:40px}
+footer{margin-left:var(--side);padding:56px clamp(24px,6vw,96px);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.up{background:none;border:1px solid var(--line);color:var(--fg);padding:14px 20px;cursor:pointer;min-height:48px}.up:hover{border-color:var(--red)}
+/* cursor */
+#cur{position:fixed;left:0;top:0;width:10px;height:10px;border-radius:50%;background:var(--red);pointer-events:none;z-index:400;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;mix-blend-mode:normal;display:none}
+#cur{opacity:0}#cur.v{opacity:1}#cur.h{width:46px;height:46px;background:rgba(241,59,72,.25);border:1px solid var(--red)}
+@media (hover:hover) and (pointer:fine){#cur{display:block}body,a,button{cursor:none}input,textarea{cursor:text}}
+/* reveal: one orchestrated entrance for each section heading only */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s}.rv.in{opacity:1;transform:none}
+::selection{background:var(--red);color:#fff}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:250;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#home:before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--hx,70%) var(--hy,30%),rgba(241,59,72,.11),transparent 60%);pointer-events:none}
+.rings{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.mq{overflow:hidden;border-bottom:1px solid var(--line);padding:26px 0}
+#mq{display:flex;gap:48px;width:max-content;animation:mq 45s linear infinite;font:italic 400 2.1rem var(--serif);color:var(--mute)}
+#mq span:after{content:"\2726";color:var(--red);margin-left:48px;font-style:normal;font-size:.8rem;vertical-align:middle}
+.mq:hover #mq{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.shot:before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(241,59,72,.2),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none}
+.shot:hover:before{opacity:1}
+.proj .info h3{transition:color .3s,transform .5s}.proj:hover .info h3{transform:translateX(8px);color:#fff}
+.tl li{transition:padding .3s,color .3s}.tl li:hover{padding-left:12px;color:var(--fg)}
+/* mobile */
+#menu,#mb{display:none}
+@media (max-width:1000px){
+:root{--side:0px}aside{display:none}
+#mb{display:flex;position:fixed;top:0;left:0;right:0;z-index:60;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 20px 14px;background:rgba(8,8,8,.92);border-bottom:1px solid var(--line)}
+#mb button{background:none;border:0;color:var(--fg);min-width:48px;min-height:48px;font:inherit}
+#menu{position:fixed;inset:0;z-index:55;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:32px;clip-path:circle(0 at calc(100% - 40px) 40px);transition:clip-path .7s cubic-bezier(.76,0,.24,1);visibility:hidden}
+#menu.o{clip-path:circle(150% at calc(100% - 40px) 40px);visibility:visible}
+#menu a{font:400 2.4rem/1.5 var(--serif)}#menu a em{font:400 11px var(--mono);color:var(--red);margin-right:12px;font-style:normal}
+#home{padding-top:96px}.about,.proj,.proj:nth-child(even),.ct,.learn{grid-template-columns:1fr}.proj:nth-child(even) .shot{order:0}
+.sk{grid-template-columns:1fr 1fr}.rings{opacity:.5;right:-10vw}.scroll{display:none}.hrow span:last-child{display:none}
+.over{opacity:1;background:linear-gradient(transparent 40%,rgba(8,8,8,.92))}.over ul{display:none}
+}
+@media (max-width:560px){.sk{grid-template-columns:1fr}.ach div{flex-direction:column;gap:6px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,h1 .l span{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div><div id="cur"></div>
+<div id="pre"><b>Aditya<span>.</span></b></div>
+
+<header id="mb"><a class="logo" href="#home" style="font-size:1.6rem">Aditya<span>.</span></a><button id="mt" class="mono" aria-expanded="false" aria-controls="menu">Menu</button></header>
+<div id="menu" aria-label="Mobile navigation"></div>
+
+<aside>
+<div class="top"><a class="logo" href="#home">Aditya<span>.</span></a><p class="mono mute" style="margin-top:8px">Full-Stack Developer</p></div>
+<div><p class="mono mute" style="margin-bottom:32px">A software developer<br>building digital experiences.</p>
+<nav id="nav" aria-label="Primary">
+<a href="#home"><em>01</em> Home</a><a href="#about"><em>02</em> About me</a><a href="#work"><em>03</em> Selected work</a><a href="#experience"><em>04</em> Experience</a><a href="#skills"><em>05</em> Skills</a><a href="#beyond"><em>06</em> Achievements</a><a href="#contact"><em>07</em> Contact</a>
+</nav></div>
+<div class="bot"><p class="mono mute"><span class="dot"></span>Available for opportunities.</p><p class="mono mute" style="margin-top:6px">Based in India</p></div>
+</aside>
+
+<main>
+<section id="home">
+<div class="glow"></div><div class="rings" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="hrow mono mute"><span>Independent thinking. Engineered solutions.</span><a href="#contact" style="color:var(--fg)">Open to opportunities <span class="arrow">↗</span></a></div>
+<div>
+<p class="mono" style="position:relative;z-index:2"><span class="red">■</span> Full-Stack Developer / MERN Stack — <span class="cyc" id="cyc">Full-Stack Developer</span></p>
+<h1><span class="l"><span>Building Digital</span></span><span class="l"><span><i>Experiences.</i></span></span><span class="l"><span>One Line at a Time.</span></span></h1>
+<p class="lead">I’m Aditya Vishwakarma — a Full-Stack Developer crafting scalable web applications, intuitive interfaces, and meaningful digital experiences.</p>
+<div class="ctas"><a class="btn mag" href="#work">Explore my work <span class="arrow">↗</span></a><a class="btn ghost mag" href="#contact">Let’s connect</a></div>
+</div>
+<span class="scroll mono">Scroll</span>
+</section>
+
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+<section id="about">
+<p class="label mono">02 / The developer</p>
+<h2 class="rv">Curious Mind.<br><i>Engineering</i> Mindset.</h2>
+<div class="about">
+<div class="rv"><p>I’m Aditya Vishwakarma, a Full-Stack Developer with a background in Electrical Engineering from Kamla Nehru Institute of Technology (KNIT), Sultanpur.</p>
+<p>I specialize in building modern web applications using React.js, Next.js, Node.js, Express.js, and MongoDB.</p>
+<p>I enjoy transforming complex requirements into practical, scalable, and user-friendly software solutions.</p>
+<p>Currently, I’m working as a Full-Stack Developer Intern at UXDLAB Software, contributing to dashboard development and application engineering.</p></div>
+<div class="rv"><div class="big" aria-hidden="true">26</div>
+<div class="facts">
+<div><span class="mono mute">Degree</span><b>B.Tech — Electrical Engineering</b></div>
+<div><span class="mono mute">Institute</span><b>KNIT Sultanpur</b></div>
+<div><span class="mono mute">Graduated</span><b>2026</b></div>
+<div><span class="mono mute">CGPA</span><b>7.15 / 10</b></div>
+<div><span class="mono mute">Location</span><b>Maharajganj, Uttar Pradesh, India</b></div>
+</div></div></div>
+</section>
+
+<section id="work">
+<p class="label mono">03 / Selected work</p>
+<h2 class="rv">Different Challenges.<br><i>One Obsession.</i></h2>
+<p class="mute rv" style="max-width:520px;margin-top:24px">A collection of applications, experiments, and digital products built with a focus on functionality, scalability, and experience.</p>
+<div class="work" id="projects"></div>
+</section>
+
+<section id="experience">
+<p class="label mono">04 / Experience</p>
+<h2 class="rv">Where Ideas<br><i>Meet Execution.</i></h2>
+<div class="tl" id="tl"><span class="fill"></span><span class="pt"></span>
+<p class="mono red">September 2026 — Present</p>
+<h3>Full-Stack Developer Intern</h3><p class="mono mute">UXDLAB Software Company</p>
+<ul><li>Designing and developing dashboard websites and applications.</li><li>Building reusable and maintainable application components.</li><li>Working on scalable full-stack solutions.</li><li>Maintaining and improving existing websites and applications.</li></ul></div>
+</section>
+
+<section id="skills">
+<p class="label mono">05 / The toolkit</p>
+<h2 class="rv">Tools I Use.<br><i>Things I Build.</i></h2>
+<div class="sk" id="sk"></div>
+<div class="learn"><div><p class="label mono" style="margin-bottom:16px">Currently learning — not yet professional skills</p><h2>Always <i>Evolving.</i></h2></div>
+<div class="pills"><span>Java</span><span>Spring Boot</span><span>Microservices</span><span>Docker</span><span>Kubernetes</span><span>Jenkins</span><span>Python</span><span>Machine Learning</span><span>Generative AI</span></div></div>
+</section>
+
+<section id="beyond">
+<p class="label mono">06 / Beyond code</p>
+<h2 class="rv">Beyond the <i>Editor.</i></h2>
+<div class="ach">
+<div><b>2nd Position — Pragyan ’23 Technical Demonstration</b><span class="mono">Award</span></div>
+<div><b>Completed the 8-session EVOLVE Technical Workshop</b><span class="mono">Workshop</span></div>
+<div><b>Head of Singing Domain, Cultural Council, KNIT Sultanpur</b><span class="mono">Leadership</span></div>
+<div><b>Represented the institute in intercollegiate cricket tournaments</b><span class="mono">Sport</span></div>
+</div>
+</section>
+
+<section id="contact">
+<p class="label mono">07 / Start a conversation</p>
+<h2 class="rv">Have an Idea?<br><i>Let’s Build Something.</i></h2>
+<div class="ct">
+<div><p>I’m always interested in connecting with people, exploring interesting challenges, and building impactful digital products.</p>
+<dl>
+<div><dt class="mono mute">Email</dt><dd>aditya7526089488@gmail.com <button class="cp mono" id="cp" type="button">Copy</button></dd></div>
+<div><dt class="mono mute">LinkedIn</dt><dd><a href="https://linkedin.com/in/aditya-vishwakarma-288511292" target="_blank" rel="noopener">linkedin.com/in/aditya-vishwakarma-288511292 <span class="arrow">↗</span></a></dd></div>
+<div><dt class="mono mute">GitHub</dt><dd><a href="https://github.com/vishw4ditya" target="_blank" rel="noopener">github.com/vishw4ditya <span class="arrow">↗</span></a></dd></div>
+<div><dt class="mono mute">Location</dt><dd>Maharajganj, Uttar Pradesh, India</dd></div>
+</dl></div>
+<form id="f" novalidate>
+<label><span class="mono mute">Name</span><input name="n" autocomplete="name" required><span class="err" data-e="n"></span></label>
+<label><span class="mono mute">Email</span><input name="e" type="email" autocomplete="email" required><span class="err" data-e="e"></span></label>
+<label><span class="mono mute">Subject</span><input name="s" required><span class="err" data-e="s"></span></label>
+<label><span class="mono mute">Message</span><textarea name="m" required></textarea><span class="err" data-e="m"></span></label>
+<button class="btn" type="submit">Send message <span class="arrow">↗</span></button>
+<p id="st" role="status" aria-live="polite"></p>
+</form></div>
+</section>
+</main>
+
+<footer>
+<div><a class="logo" href="#home">Aditya Vishwakarma<span>.</span></a><p class="mono mute" style="margin-top:12px">Designed with intention.<br>Built with code.</p></div>
+<div style="text-align:right"><button class="up mono" id="up" type="button">Back to top ↑</button><p class="mono mute" style="margin-top:12px">© 2026 Aditya Vishwakarma</p></div>
+</footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const P=[
+{n:'01',t:'Customer Management System',c:'Full-stack development / MERN',m:'m1',d:'A comprehensive customer management platform designed to simplify business operations through role-based access, customer tracking, and structured management workflows.',f:['Five user roles','JWT authentication','Role-Based Access Control','RESTful APIs','Customer, branch, and user management','Responsive admin dashboards','MongoDB database architecture'],k:['React.js','Node.js','Express.js','MongoDB','JWT','Tailwind CSS'],g:'https://github.com/vishw4ditya/DSRBackend',l:'https://dsr-frontend-puce.vercel.app'},
+{n:'02',t:'Athlete Hub',c:'Full-stack development / MERN',m:'m2',d:'A platform connecting athletes, coaches, and sponsors through secure profiles and structured user management.',f:['Three user types','Secure JWT authentication','Profile management','RESTful API integration','Responsive interfaces','Axios-based frontend/backend communication'],k:['React.js','Node.js','Express.js','MongoDB','JWT','Axios','Tailwind CSS'],g:'https://github.com/vishw4ditya/athlete_hub',l:'https://athlete-hub-mts6.onrender.com'},
+{n:'03',t:'What to Cook',c:'Frontend development / Web application',m:'m3',d:'An interactive recipe discovery application that helps users discover meals based on available ingredients and dietary preferences.',f:['Ingredient-based recipe search','Dietary preference filters','Recipe categories','Third-party API integration','Optimized loading states','Responsive UI'],k:['React.js','JavaScript ES6+','Tailwind CSS','Recipe API','Vercel'],g:'https://github.com/vishw4ditya/what_to_cook',l:'https://what-to-cook-sable.vercel.app'}];
+$('#projects').innerHTML=P.map(p=>`<article class="proj rv">
+<a class="shot" href="${p.l}" target="_blank" rel="noopener" aria-label="Open ${p.t} live">
+<i class="corner"></i><span class="mono tag">Project ${p.n}</span>
+<div class="mock ${p.m}" aria-hidden="true"><div class="w"><i></i><i class="r"></i><i></i><i></i><i></i></div></div>
+<span class="mono note">Interface sketch — not a screenshot</span>
+<div class="over"><ul>${p.f.map(x=>`<li>${x}</li>`).join('')}</ul><p class="mono" style="margin-top:14px">View live <span class="arrow">↗</span></p></div></a>
+<div class="info"><p class="mono red">${p.n} — ${p.c}</p><h3>${p.t}</h3><p>${p.d}</p>
+<div class="tags mono">${p.k.map(x=>`<span>${x}</span>`).join('')}</div>
+<div class="links mono"><a href="${p.l}" target="_blank" rel="noopener">Live <span class="arrow">↗</span></a><a href="${p.g}" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a></div></div></article>`).join('');
+const S={Frontend:['React.js','Next.js','HTML5','CSS3','Tailwind CSS','Bootstrap'],Backend:['Node.js','Express.js','RESTful APIs','JWT Authentication'],Database:['MongoDB','MongoDB Atlas','SQL'],Programming:['JavaScript ES6+','C++'],Libraries:['Axios','React Hooks'],Tools:['Git','GitHub','Postman','VS Code','Render','Vercel','Netlify']};
+$('#sk').innerHTML=Object.entries(S).map(([k,v])=>`<div class="rv"><h3>${k}</h3>${v.map(x=>`<span class="mono">${x}</span>`).join('')}</div>`).join('');
+// nav
+const L=[['home','Home'],['about','About me'],['work','Selected work'],['experience','Experience'],['skills','Skills'],['beyond','Achievements'],['contact','Contact']];
+const menu=$('#menu'),mt=$('#mt');
+menu.innerHTML=L.map((l,i)=>`<a href="#${l[0]}"><em>0${i+1}</em>${l[1]}</a>`).join('');
+const tog=o=>{menu.classList.toggle('o',o);mt.setAttribute('aria-expanded',o);mt.textContent=o?'Close':'Menu'};
+mt.onclick=()=>tog(!menu.classList.contains('o'));$$('a',menu).forEach(a=>a.onclick=()=>tog(false));
+const links=$$('#nav a');
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section').forEach(s=>so.observe(s));
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.15});
+$$('.rv').forEach(e=>ro.observe(e));ro.observe($('#tl'));
+// progress, preloader
+addEventListener('scroll',()=>{const d=document.documentElement;$('#bar').style.width=(scrollY/(d.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+addEventListener('load',()=>setTimeout(()=>{$('#pre').classList.add('go');document.body.classList.add('ready')},700));
+setTimeout(()=>{$('#pre').classList.add('go');document.body.classList.add('ready')},2500);
+// cycling text
+const W=['Full-Stack Developer','MERN Stack Developer','Software Engineer'];let wi=0;
+setInterval(()=>{wi=(wi+1)%3;$('#cyc').textContent=W[wi]},2400);
+// cursor + magnetic
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){const c=$('#cur');
+addEventListener('mousemove',e=>{c.style.transform=`translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;c.classList.add('v');c.classList.toggle('h',!!e.target.closest('a,button'))});
+const hm=$('#home'),rg=$('.rings');hm.addEventListener('mousemove',e=>{const r=hm.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;hm.style.setProperty('--hx',x+'px');hm.style.setProperty('--hy',y+'px');rg.style.transform=`translate(${(x/r.width-.5)*-40}px,${(y/r.height-.5)*-40}px)`});
+$$('.shot').forEach(s=>s.addEventListener('mousemove',e=>{const r=s.getBoundingClientRect();s.style.setProperty('--mx',e.clientX-r.left+'px');s.style.setProperty('--my',e.clientY-r.top+'px')}));
+$$('.mag').forEach(b=>{b.onmousemove=e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.2}px,${(e.clientY-r.top-r.height/2)*.3}px)`};b.onmouseleave=()=>b.style.transform=''})}
+{const t=['React.js','Next.js','Node.js','Express.js','MongoDB','JWT','Tailwind CSS','REST APIs','Git','Vercel'].map(x=>`<span>${x}</span>`).join('');$('#mq').innerHTML=t+t}
+// copy + back to top
+const EM='aditya7526089488@gmail.com';
+$('#cp').onclick=async e=>{try{await navigator.clipboard.writeText(EM);e.target.textContent='Copied'}catch(_){e.target.textContent='Press Ctrl+C';}setTimeout(()=>e.target.textContent='Copy',2000)};
+$('#up').onclick=()=>scrollTo({top:0});
+// form: validates, then opens the visitor's email app with the message pre-filled (no backend on a static page)
+$('#f').onsubmit=e=>{e.preventDefault();const f=e.target,v=k=>f[k].value.trim();let ok=true;
+const chk={n:v('n')?'':'Enter your name.',e:/^\S+@\S+\.\S+$/.test(v('e'))?'':'Enter a valid email address.',s:v('s')?'':'Enter a subject.',m:v('m').length>=10?'':'Write a message of at least 10 characters.'};
+for(const k in chk){$(`[data-e=${k}]`,f).textContent=chk[k];if(chk[k])ok=false}
+const st=$('#st');if(!ok){st.textContent='Fix the highlighted fields and try again.';st.style.color='var(--red)';return}
+const body=`${v('m')}\n\n— ${v('n')} (${v('e')})`;
+location.href=`mailto:${EM}?subject=${encodeURIComponent(v('s'))}&body=${encodeURIComponent(body)}`;
+st.style.color='var(--fg)';st.textContent='Opening your email app with the message ready to send. If nothing opens, copy my email above.'};
+</script>
+</body>
+</html>
